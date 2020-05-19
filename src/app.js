@@ -10,8 +10,10 @@ var catalogRouter = require('./routes/catalog');
 
 var app = express();
 
+require('dotenv').config()
+
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://fabiotk:19941926@cluster0-48rrv.gcp.mongodb.net/local_library?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URL
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
